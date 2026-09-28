@@ -7,7 +7,7 @@ function dibujarBoton(x, y, tamX, tamY, nombre) {
   }
 
   rect(x, y, tamX, tamY, tamY / 4);
-
+  textFont(fuenteBotones);
   textSize(tamY / 3);
   textAlign(CENTER, CENTER);
   fill(255);
