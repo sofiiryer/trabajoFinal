@@ -10,15 +10,16 @@ let textoHistoria2 = [
 "atendiendo pasajeros",  
 "cuando el avion pasa por la isla."  
 ]  
-let textoHistoria3 = [  
-"Al otro día vuelven a pasar por la misma isla",  
-" y Marini la reconoce. Una pasajera le comenta",  
-"que la isla se llama Xiros."  
+let textoHistoria3 = [
+"Un día, a mediodía Marini mira por la ventanilla",  
+"y descubre una pequeña isla en el mar",  
+"Y queda fascinado contemplándola."  
 ]  
 let textoHistoria4 = [  
-"La escena vuelve a repetirse.",  
-"Marini descubre que siempre ve Xiros al mediodía y",  
-"comienza a obsesionarse con la isla."   
+"Al día siguiente vuelve a pasar por la isla.",  
+"Marini la reconoce",
+"y una pasajera le dice que es Xiros.",  
+"A partir de ese momento, comienza su obsesión."  
 
 ]  
 let textoHistoria5 = [
@@ -115,7 +116,7 @@ function pantallaHistoria2(){//-------------------------------------------------
   textAlign(LEFT,TOP);  
     
   for (let i = 0; i < cantidadTexto; i++){  
-    text(textoHistoria3[i],40,300 + i * 35);  
+    text(textoHistoria3[i],10,330 + i * 32);  
       
   }  
     
@@ -133,7 +134,7 @@ function pantallaHistoria3(){
   textAlign(LEFT,TOP);  
   
   for (let i = 0; i < cantidadTexto; i++){  
-    text(textoHistoria4[i],40,300 + i * 35);  
+    text(textoHistoria4[i],10,300 + i * 35);  
   }  
   
   if(frameCount % 30 == 0 && cantidadTexto < textoHistoria4.length) {  
@@ -201,4 +202,5 @@ function pantallaHistoria5b(){
       cantidadTexto = 0;  
     }  
   }
+  
   
