@@ -1,6 +1,3 @@
-let pantalla = 0;  
-let imgPortada;  
-let pantalla2 , pantalla3, pantalla4, pantalla5, pantalla5a, pantalla5b;  
 let fuenteTitulo;  
 let fuenteBotones;  
 let cantidadTexto = 0;  
@@ -22,10 +19,38 @@ let textoHistoria4 = [
 "A partir de ese momento, comienza su obsesión."  
 
 ]  
-let textoHistoria5 = [
+let Decision1y4 = [
 "¿QUÉ HACER CON ESA OBSESIÓN?"
+]//---------------------------------------------
+let textoHistoria5A = [//ignora
+"Marini decide ignorar la isla",
+"e intenta olvidarse de Xiros y acepta otra ruta de vuelo."
 ]
-  
+let textoHistoria6A = ["Marini logra olvidarse de la isla."]
+let textoHistoria7A = ["Xiros queda solamente como un recuerdo,", "acompañado de cierta nostalgia."];
+let textoHistoria8A = ["Marini vuelve a enfocarse en su vida cotidiana."];
+let textoFinal1 = ["FINAL 1: Una nueva vida", "Marini decide dejar su trabajo de auxiliar de vuelo", "y forma una familia con Carla."];
+//--------------------------------------------------------
+let textoHistoria5B = [//sigue
+"Marini decide seguir.",
+"Comienza a investigar sobre Xiros."
+]
+let textoHistoria6B = ["Marini decide viajar hasta Xiros", "y conoce a Klaios."];
+let textoHistoria7B = ["Marini recorre la isla."];
+let Decision2 = ["¿VOLVER O QUEDARSE EN XIROS?"];
+let textoHistoria8B = ["Marini decide quedarse",
+"comienza a pensar en su vida", "y en todo lo que dejó atrás."];
+let textoHistoria9B = ["Marini ve pasar el avión sobre la isla."];
+let Decision3 = ["¿SALIR A VER EL AVIÓN O NO VERLO?"];
+let Decision4 = ["¿EL AVIÓN CAE O NO CAE?"];
+let textoFinal2 = ["FINAL 2: Una nueva vida en la isla",
+"Marini decide quedarse definitivamente en Xiros", 
+"y comienza una nueva vida allí."];
+let Decision5 = ["EL AVIÓN CAE A CERCANÍAS DE LA ISLA", "¿A QUIÉN BUSCA RESCATAR?"];
+let pantalla10A = ["cuerpo de felisa"];
+let pantalla10B = ["cuerpo de Marini"];
+let textoFinal3 = ["FINAL 3: La isla maldita", "Marini encuentra una versión de sí mismo", "y queda atrapado en la tragedia de Xiros."];
+
 function preload(){  
   imgPortada = loadImage("data/portada.png");  
   fuenteTitulo = loadFont("data/DMSerifDisplay-Regular.ttf");  
@@ -95,15 +120,7 @@ function pantallaHistoria1(){// ------------------------------------------------
   textSize(30);  
   textAlign(LEFT,TOP);  
   
- for (let i = 0; i < cantidadTexto; i++) {  
-   text(textoHistoria2[i],40,300 + i * 35);  
-      
- }  
-   
-  if (frameCount % 30 == 0 && cantidadTexto < textoHistoria2.length) {  
-    cantidadTexto++;  
-    
-}  
+ mostrarTexto(textoHistoria2, 40, 300, 35);// esto es una funcion ahora bro (funciondetext)
   
  dibujarBoton(550, 370, 200, 45, "CONTINUAR");  
 }  
@@ -115,16 +132,10 @@ function pantallaHistoria2(){//-------------------------------------------------
   textSize(30);  
   textAlign(LEFT,TOP);  
     
-  for (let i = 0; i < cantidadTexto; i++){  
-    text(textoHistoria3[i],10,330 + i * 32);  
-      
-  }  
-    
-  if(frameCount % 30 == 0 && cantidadTexto < textoHistoria3.length) {  
-    cantidadTexto++;  
-}  
+ mostrarTexto(textoHistoria3, 10, 330, 32); 
+  
 dibujarBoton(550, 370, 200, 45, "CONTINUAR");  
-}  
+} // ------------------------------------------------------ pabtalla 3
   
 function pantallaHistoria3(){  
   image(pantalla4,0,0,width,height);  
@@ -133,17 +144,10 @@ function pantallaHistoria3(){
   textSize(30);  
   textAlign(LEFT,TOP);  
   
-  for (let i = 0; i < cantidadTexto; i++){  
-    text(textoHistoria4[i],10,300 + i * 35);  
-  }  
-  
-  if(frameCount % 30 == 0 && cantidadTexto < textoHistoria4.length) {  
-    cantidadTexto++;  
-  }  
-  
+  mostrarTexto(textoHistoria4,10,300,35);
   dibujarBoton(550, 370, 200, 45, "CONTINUAR");  
 }  
-  
+ // ----------------------------------------------------- pantalla 4
 function pantallaHistoria4(){  
   image(pantalla5,0,0,width,height);  
   fill(255);  
@@ -151,17 +155,12 @@ function pantallaHistoria4(){
   textSize(34);  
   textAlign(CENTER,TOP);  
   
-  for (let i = 0; i < cantidadTexto; i++){  
-    text(textoHistoria5[i],400,40 + i * 35);  
-  }  
-  
-  if(frameCount % 30 == 0 && cantidadTexto < textoHistoria5.length) {  
-    cantidadTexto++;  
-  }  
+    
+    mostrarTexto(Decision1y4,400,40,35);
   
   dibujarBoton(80, 330, 220, 55, "IGNORARLA");  
   dibujarBoton(500, 330, 220, 55, "SEGUIRLA");  
-}  
+}  //------------------------------------------------
   
 function pantallaHistoria5a(){  
   image(pantalla5a,0,0,width,height);  
@@ -174,32 +173,27 @@ function pantallaHistoria5b(){
   
   function mousePressed() {  
     if(detectarZonaR(300,300,200,50)){  
-      pantalla = 1;  
+      cambiarPantalla(1);  
      //cantidadTexto = 0;  
     }  
     if (detectarZonaR(300,370,200,50)){  
-      pantalla = 100   
+       cambiarPantalla(100);  // esto es un ej no exite una pantalla 100
         
     }  
     if(pantalla== 1 && detectarZonaR(550,370,200,45)){  
-      pantalla = 2;  
-      cantidadTexto = 0;  
+       cambiarPantalla(2);
     }  
     else if(pantalla== 2 && detectarZonaR(550,370,200,45)){  
-      pantalla = 3;  
-      cantidadTexto = 0;  
+       cambiarPantalla(3); 
     }  
     else if(pantalla== 3 && detectarZonaR(550,370,200,45)){  
-      pantalla = 4;  
-      cantidadTexto = 0;  
+       cambiarPantalla(4); 
     }  
     else if(pantalla== 4 && detectarZonaR(80,330,220,55)){  
-      pantalla = 6;  
-      cantidadTexto = 0;  
+       cambiarPantalla(6);
     }  
     else if(pantalla== 4 && detectarZonaR(500,330,220,55)){  
-      pantalla = 7;  
-      cantidadTexto = 0;  
+       cambiarPantalla(7);  
     }  
   }
   
