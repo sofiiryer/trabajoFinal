@@ -1,3 +1,6 @@
+let pantalla = 0;  
+let imgPortada;  
+let pantalla2 , pantalla3, pantalla4, pantalla5, pantalla5a, pantalla5b;  
 let fuenteTitulo;  
 let fuenteBotones;  
 let cantidadTexto = 0;  
