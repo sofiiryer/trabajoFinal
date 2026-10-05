@@ -13,3 +13,8 @@ function cambiarPantalla(nuevaPantalla) {
   pantalla = nuevaPantalla;
   cantidadTexto = 0;
 }
+function dibujarPanelTexto(x,y,tamX,tamY) {
+  fill(0,0,0,150);
+  rect(x,y,tamX,tamY,10);
+  
+}
