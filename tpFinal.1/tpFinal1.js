@@ -1,6 +1,6 @@
 let pantalla = 0;  
 let imgPortada;  
-let pantalla2 , pantalla3, pantalla4, pantalla5, pantalla5a, pantalla5b;  
+let pantalla2 , pantalla3, pantalla4, pantalla5, pantalla5a, pantalla5b,pantalla6a,pantalla7a,pantalla8a,final1;  
 let fuenteTitulo;  
 let fuenteBotones;  
 let cantidadTexto = 0;  
@@ -9,30 +9,37 @@ let textoHistoria2 = [
 "en la ruta Roma-Teheran.",  
 "atendiendo pasajeros",  
 "cuando el avion pasa por la isla."  
-]  
+] ; 
 let textoHistoria3 = [
 "Un día, a mediodía Marini mira por la ventanilla",  
 "y descubre una pequeña isla en el mar",  
 "Y queda fascinado contemplándola."  
-]  
+] ; 
 let textoHistoria4 = [  
-"Al día siguiente vuelve a pasar por la isla.",  
-"Marini la reconoce",
-"y una pasajera le dice que es Xiros.",  
-"A partir de ese momento, comienza su obsesión."  
+"Al día siguiente vuelven a pasar por la isla.",  
+"Marini la reconoce, una pasajera le dice",
+"que esa isla es Xiros.",
+"Es ahi donde comienza su obsesion",  
+  
 
-]  
+] ; 
 let Decision1y4 = [
 "¿QUÉ HACER CON ESA OBSESIÓN?"
-]//---------------------------------------------
+];//---------------------------------------------
 let textoHistoria5A = [//ignora
 "Marini decide ignorar la isla",
-"e intenta olvidarse de Xiros y acepta otra ruta de vuelo."
-]
-let textoHistoria6A = ["Marini logra olvidarse de la isla."]
-let textoHistoria7A = ["Xiros queda solamente como un recuerdo,", "acompañado de cierta nostalgia."];
-let textoHistoria8A = ["Marini vuelve a enfocarse en su vida cotidiana."];
-let textoFinal1 = ["FINAL 1: Una nueva vida", "Marini decide dejar su trabajo de auxiliar de vuelo", "y forma una familia con Carla."];
+"e intenta olvidarse de Xiros",
+"y acepta otra ruta de vuelo."
+];
+let textoHistoria6A = ["Marini logra olvidarse de la isla.",
+                       "Cambia sus horarios de trabajo",
+                       "Se enfoca en sus vuelos"];
+                                                        
+let textoHistoria7A = ["Xiros queda solamente como un recuerdo,",
+                        "acompañado de cierta nostalgia."];
+let textoHistoria8A = ["Marini vuelve a enfocarse en su vida cotidiana.",
+"Dejando atras la obsesion que sentia"];
+let textoFinal1 = ["Una nueva vida", "Marini decide dejar su trabajo de auxiliar de vuelo", "y forma una familia con Carla."];
 //--------------------------------------------------------
 let textoHistoria5B = [//sigue
 "Marini decide seguir.",
@@ -64,6 +71,10 @@ function preload(){
   pantalla5 = loadImage ("data/pantalla5.jpeg");  
   pantalla5a = loadImage ("data/pantalla5a.jpeg");  
   pantalla5b = loadImage ("data/pantalla5b.jpeg");  
+  pantalla6a = loadImage ("data/pantalla6A.jpeg");
+  pantalla7a = loadImage ("data/pantalla7A.jpeg");
+  pantalla8a = loadImage ("data/pantalla8A.jpeg");
+  final1 = loadImage ("data/final1.jpeg");
 }  
 function setup() {  
 createCanvas(800,450);  
@@ -89,14 +100,25 @@ function draw() {
   if(pantalla==4) {  
     pantallaHistoria4 ();  
   }  
+  if(pantalla==5) {  
+    pantallaHistoria5A ();  
+  }  //rama b
   if(pantalla==6) {  
-    pantallaHistoria5a ();  
-  }  
-  if(pantalla==7) {  
     pantallaHistoria5b ();  
   }  
+  if(pantalla==7){
+  pantallaHistoria6a ();
 }  
-  
+if(pantalla==8){
+  pantallaHistoria7a ();
+}  
+if(pantalla==9){
+  pantallaHistoria8a ();
+}
+if(pantalla==10){
+  pantallaFinal1 ();
+}
+}
   
   
 function pantallaInicio() {  
@@ -117,37 +139,39 @@ function pantallaInicio() {
   
 function pantallaHistoria1(){// ------------------------------------------------------------ pantalla 1  
   image(pantalla2,0,0,width,height);  
-    
+  dibujarPanelTexto(30, 280, 740, 160);  
   fill(255);  
   textFont(fuenteTitulo);  
   textSize(30);  
   textAlign(LEFT,TOP);  
   
- mostrarTexto(textoHistoria2, 40, 300, 35);// esto es una funcion ahora bro (funciondetext)
+ mostrarTexto(textoHistoria2, 40, 290, 35);// esto es una funcion ahora bro (funciondetext)
   
  dibujarBoton(550, 370, 200, 45, "CONTINUAR");  
 }  
     
 function pantallaHistoria2(){//-------------------------------------------------------------- pantalla 2  
   image(pantalla3,0,0,width,height);  
+  dibujarPanelTexto(10, 290, 780, 150); 
   fill(255);  
   textFont(fuenteTitulo);  
   textSize(30);  
   textAlign(LEFT,TOP);  
     
- mostrarTexto(textoHistoria3, 10, 330, 32); 
+ mostrarTexto(textoHistoria3, 26, 300, 32); 
   
 dibujarBoton(550, 370, 200, 45, "CONTINUAR");  
 } // ------------------------------------------------------ pabtalla 3
   
 function pantallaHistoria3(){  
   image(pantalla4,0,0,width,height);  
+   dibujarPanelTexto(10, 290, 780, 150); 
   fill(255);  
   textFont(fuenteTitulo);  
   textSize(30);  
   textAlign(LEFT,TOP);  
   
-  mostrarTexto(textoHistoria4,10,300,35);
+  mostrarTexto(textoHistoria4,15,290,35);
   dibujarBoton(550, 370, 200, 45, "CONTINUAR");  
 }  
  // ----------------------------------------------------- pantalla 4
@@ -163,14 +187,72 @@ function pantallaHistoria4(){
   
   dibujarBoton(80, 330, 220, 55, "IGNORARLA");  
   dibujarBoton(500, 330, 220, 55, "SEGUIRLA");  
-}  //------------------------------------------------
+}  //------------------------------------------------ ignora
   
-function pantallaHistoria5a(){  
+function pantallaHistoria5A(){  
   image(pantalla5a,0,0,width,height);  
-}  
+  dibujarPanelTexto(10, 290, 780, 150);
+  fill(255);
+  textFont(fuenteTitulo);
+  textSize(30);
+  textAlign(LEFT, TOP);
+  mostrarTexto(textoHistoria5A,50,310,35);
+    dibujarBoton(550, 370, 200, 45, "CONTINUAR");
+}  //----------------------------------------------
+  
+  function pantallaHistoria6a(){
+  image(pantalla6a,0,0,width,height); 
+   dibujarPanelTexto(10, 290, 780, 150);
+  fill(255);
+  textFont(fuenteTitulo);
+  textSize(30);
+  textAlign(LEFT, TOP);
+  mostrarTexto(textoHistoria6A,50,310,35);
+    dibujarBoton(550, 370, 200, 45, "CONTINUAR");   
+  }
+ function pantallaHistoria7a(){
+ image(pantalla7a,0,0,width,height); 
+   dibujarPanelTexto(10, 290, 780, 150);
+  fill(255);
+  textFont(fuenteTitulo);
+  textSize(30);
+  textAlign(LEFT, TOP);
+  mostrarTexto(textoHistoria7A,50,320,35);
+    dibujarBoton(550, 370, 200, 45, "CONTINUAR");   
+ 
+ }
+  function pantallaHistoria8a(){
+ image(pantalla8a,0,0,width,height); 
+   dibujarPanelTexto(10, 290, 780, 150);
+  fill(255);
+  textFont(fuenteTitulo);
+  textSize(30);
+  textAlign(LEFT, TOP);
+  mostrarTexto(textoHistoria8A,50,320,35);
+    dibujarBoton(550, 370, 200, 45, "CONTINUAR");   
+  }
+  function pantallaFinal1(){
+  image(final1, 0, 0, width, height);
+
+  dibujarPanelTexto(10, 290, 780, 150);
+  fill(255);
+  textFont(fuenteTitulo);
+  textSize(30);
+  textAlign(LEFT, TOP);
+
+  mostrarTexto(textoFinal1, 50, 300, 35);
+
+  dibujarBoton(550, 370, 200, 45, "VOLVER AL INICIO");
+}
+  
+  
+  
   
 function pantallaHistoria5b(){  
   image(pantalla5b,0,0,width,height);  
+  
+
+  dibujarBoton(550, 370, 200, 45, "CONTINUAR");
 }  
   
   
@@ -193,11 +275,25 @@ function pantallaHistoria5b(){
        cambiarPantalla(4); 
     }  
     else if(pantalla== 4 && detectarZonaR(80,330,220,55)){  
-       cambiarPantalla(6);
+       cambiarPantalla(5);
     }  
     else if(pantalla== 4 && detectarZonaR(500,330,220,55)){  
-       cambiarPantalla(7);  
+       cambiarPantalla(6);  
     }  
+    else if(pantalla==5 && detectarZonaR(550,370,200,45)){
+      cambiarPantalla(7); 
+    }
+    else if (pantalla == 7 && detectarZonaR(550, 370, 200, 45)) {
+    cambiarPantalla(8);
   }
-  
+  else if (pantalla == 8 && detectarZonaR(550, 370, 200, 45)){
+    cambiarPantalla(9);
+  }
+  else if (pantalla == 9 && detectarZonaR(550, 370, 200, 45)){
+  cambiarPantalla(10);
+}
+else if (pantalla == 10 && detectarZonaR(550, 370, 200, 45)){
+  cambiarPantalla(0);
+}
+  }
   
