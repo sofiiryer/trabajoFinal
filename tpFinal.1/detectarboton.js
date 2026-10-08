@@ -15,19 +15,14 @@ function dibujarBoton(x, y, tamX, tamY, nombre) {
   text(nombre, x + tamX / 2, y + tamY / 2);
 }
 
-
 function detectarZonaR(x, y, tamX, tamY) {
 
   if (mouseX > x &&
       mouseX < x + tamX &&
       mouseY > y &&
       mouseY < y + tamY) {
-
     return true;
-
   } else {
-
     return false;
-
   }
 }
