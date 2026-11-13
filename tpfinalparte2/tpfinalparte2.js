@@ -13,8 +13,11 @@ function setup() {
   juego = new Juego(imagenMarini, imagenPiedra, imagenAcantilado);
 }
 
-function draw() {
-  juego.dibujarJuego();
+function draw(){
+if (keyIsPressed && (keyCode === 65 || keyCode === 68)) {
+    juego.teclaPresionada(keyCode);
+  }
+   juego.dibujarJuego();
 }
 
 function keyPressed() {
