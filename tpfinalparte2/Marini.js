@@ -2,16 +2,18 @@ class Marini {
   constructor(x, y, imagen) {
   this.posX = x;
   this.posY = y;
-  this.vel = 10;
+  this.vel = 4;
   this.imagen = imagen;
+  this.alto = 100;
+  this.ancho = this.imagen.width * this.alto / this.imagen.height;
 }
 
 dibujarMarini() {
-  let alto = 150;
-  let ancho = this.imagen.width * alto / this.imagen.height;
+  
 
-  image(this.imagen, this.posX - ancho / 2, this.posY - alto / 2, ancho, alto);
+  image(this.imagen, this.posX - this.ancho / 2, this.posY - this.alto / 2, this.ancho, this.alto);
 }
+
 
 teclaPresionada(keyCode) {
   if (keyCode === 65) { // A
